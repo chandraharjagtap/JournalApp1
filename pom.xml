@@ -20,6 +20,7 @@
 	<!-- Match JAVA_HOME – use Java 17 or 21 -->
 	<properties>
 		<java.version>11</java.version>
+		<sonar.organization>chandraharjagtap</sonar.organization>
 	</properties>
 
 	<dependencies>
