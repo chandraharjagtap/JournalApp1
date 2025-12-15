@@ -1,5 +1,7 @@
 package net.engineeringdigest.journalApp.Controller;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
+import net.engineeringdigest.journalApp.cache.AppCache;
 import net.engineeringdigest.journalApp.entity.User;
 import net.engineeringdigest.journalApp.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,10 +13,14 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/admin")
+@Tag(name = "Admin APIs")
 public class AdminController {
 
     @Autowired
     public UserService userService;
+
+    @Autowired
+    private AppCache appCache;
 
     @GetMapping("/all-users")
     public ResponseEntity<?> getAllUser(){
@@ -29,6 +35,17 @@ public class AdminController {
     public void createUser(@RequestBody  User user) {
         userService.saveAdmin(user);
 
+    }
+
+
+
+
+
+
+
+    @GetMapping("/clear-app-cache")
+    public void clearAppCache(){
+      appCache.init();
     }
 
 }
